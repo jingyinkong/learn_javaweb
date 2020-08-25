@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>success</title>
+<title>Fail</title>
 </head>
 <body>
-	<h1>success</h1>
+	<h1>Fail</h1>
+	<a href="login.jsp">返回登录页面</a>
 </body>
 </html>

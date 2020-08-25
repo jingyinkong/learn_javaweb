@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 14px/1.5 "Î¢ÈíÑÅºÚ";
+    color: rgb(94, 100, 106);
+}
+
+a {
+    text-decoration: none;
+}
+
+input{
+	margin: 0 auto;
+	display: block;
+}
+
+.box{
+	margin: 100px auto;
+	width:308px;
+	height:229px;
+	background-color: pink;
+	text-align:center;
+}
+

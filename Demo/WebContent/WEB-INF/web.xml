@@ -3,7 +3,11 @@
     xmlns="http://java.sun.com/xml/ns/javaee"   
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
-    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">  
+    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <welcome-file-list>
+  	<welcome-file>/index.jsp</welcome-file>  
+  </welcome-file-list>
+  <!-- 配置Servlet -->  
   <servlet>  
      <!-- 类名 -->  
     <servlet-name>LoginServlet</servlet-name>
@@ -11,8 +15,8 @@
     <servlet-class>demo.LoginServlet</servlet-class>  
   </servlet>  
   <servlet-mapping>  
-    <servlet-name>LoginServlet</servlet-name>  
+    <servlet-name>LoginServlet</servlet-name>
     <!-- 访问的网址 -->  
-    <url-pattern>/Demo</url-pattern>  
+    <url-pattern>/Demo/LoginServlet</url-pattern>  
     </servlet-mapping>  
 </web-app> 
