@@ -1,6 +1,8 @@
 package pers.demo.login;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,31 +20,31 @@ public class LoginServlet extends HttpServlet {
 	private static user user = null;
     /**
      * @see HttpServlet#HttpServlet()
-     */
-	
-	public void init(ServletConfig config) throws ServletException{
-		user user = new user(null, null);
+     */	
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException{
+		user = new user(null, null);
+	}
+	
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		try {
+			user.disconnect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-//    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    	request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
-//    	
-//    	String method = request.getMethod();
-//    	if ("get".equalsIgnoreCase(method)) {
-//    		doGet(request, response);
-//    	}else if ("post".equalsIgnoreCase(method)) {
-//    		doPost(request, response);
-//    	}
-//    	else {
-//    		System.out.println("ﾇ�ﾇｧｰﾜ");
-//    	}
-//    }
-    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -70,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(name);
 		System.out.println(password);
 		
-		if ("jingyinkong".equals(name) && "123456".equals(password)) {
+		if (user.selectDatas(name, password)) {
 			request.getRequestDispatcher("success.jsp").forward(request, response);
 		}else {
 			request.setAttribute("msg","用户名密码错误");

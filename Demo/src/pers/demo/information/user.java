@@ -54,7 +54,7 @@ public class user {
 	protected void createTable() {
 		Statement statement = null;
         String sql = "CREATE TABLE USERINFORMATION(" +
-                " ID INT PRIMARY KEY     NOT NULL," +
+                " ID SERIAL PRIMARY KEY  NOT NULL," +
                 " USERNAME       TEXT    NOT NULL, " +
                 " PASSWORD       TEXT    NOT NULL)";
         try {
@@ -100,12 +100,13 @@ public class user {
 		ResultSet result;
 		try {
 			setUsername(username);
+			System.out.println("username : " + this.username);
 			statement = connect.createStatement();
 			result = statement.executeQuery("select * from userinformation");
 			while(result.next()) {
 				String name = result.getString("username");
 				System.out.println("name : " + name);
-				if (equals(name)) {
+				if (equals(name)) {			
 					flag = true;
 					break;
 				}
@@ -115,8 +116,38 @@ public class user {
 			error.printStackTrace();
 			System.err.println(error.getClass().getName()+": "+error.getMessage());
 		}
+		System.out.println("flag : " + flag);
 		return flag;
 	}
+	
+	public boolean selectDatas(String username, String password) {
+		boolean flag = false;
+		Statement statement = null;
+		ResultSet result;
+		try {
+			setUsername(username);
+			setPassword(password);
+			System.out.println("username : " + this.username);
+			statement = connect.createStatement();
+			result = statement.executeQuery("select * from userinformation");
+			while(result.next()) {
+				String name = result.getString("username");
+				String passwd = result.getString("password");
+				System.out.println("name : " + name);
+				System.out.println("passwd : " + passwd);
+				if (equals(name, passwd)) {			
+					flag = true;
+					break;
+				}
+			}
+		} catch (SQLException error) {
+			// TODO Auto-generated catch block
+			error.printStackTrace();
+			System.err.println(error.getClass().getName()+": "+error.getMessage());
+		}
+		System.out.println("flag : " + flag);
+		return flag;
+	}	
 	
 	public String getUsername() {
 		return username;
@@ -134,35 +165,29 @@ public class user {
 		this.password = password;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
-		return result;
+	public boolean equals(String username) {
+		if (username == null) {
+			return false;			
+		}
+		if (username.equals(getUsername())) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean equals(String username, String password) {
+		if (username == null || password == null) {
+			return false;			
+		}
+		if (username.equals(getUsername()) && password.equals(getPassword())) {
+			return true;
+		}
+		return false;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		user other = (user) obj;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
-		return true;
+	public void disconnect() throws SQLException {
+		System.out.println("postgresql is disconnected");
+		connect.close();
 	}
 	
 }
