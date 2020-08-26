@@ -1,41 +1,52 @@
-package demo;
+package pers.demo.register;
 
 import java.io.IOException;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pers.demo.information.user;
+
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class RegisterServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	private static user user = null;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-//    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    	request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
-//    	
-//    	String method = request.getMethod();
-//    	if ("get".equalsIgnoreCase(method)) {
-//    		doGet(request, response);
-//    	}else if ("post".equalsIgnoreCase(method)) {
-//    		doPost(request, response);
-//    	}
-//    	else {
-//    		System.out.println("«Î«Û ß∞‹");
-//    	}
-//    }
-    
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		user = new user(null, null);
+	}
+
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 */
+//	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		System.out.println("RegisterServlet.service()");
+//	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -43,11 +54,8 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/jsp;charset=UTF-8");
-		
-		//String name =new String(request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
-		System.out.println("LoginServlet.doGet()");
+		System.out.println("RegisterServlet.doGet()");
 		doPost(request, response);
-		
 	}
 
 	/**
@@ -55,19 +63,21 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		System.out.println("LoginServlet.doPost()");
+		System.out.println("RegisterServlet.doPost()");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		
 		System.out.println(name);
 		System.out.println(password);
 		
-		if ("jingyinkong".equals(name) && "123456".equals(password)) {
-			request.getRequestDispatcher("success.jsp").forward(request, response);
+		if (user.selectDatas(name)) {
+			request.setAttribute("msg","Áî®Êà∑ÂêçÂ∑≤Ê≥®ÂÜå");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("fail.jsp").forward(request, response);
+			user.insertDatas(name, password);
+			request.getRequestDispatcher("success.jsp").forward(request, response);
 		}
+
 	}
 
 }

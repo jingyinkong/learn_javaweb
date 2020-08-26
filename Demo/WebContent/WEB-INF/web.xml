@@ -7,16 +7,30 @@
   <welcome-file-list>
   	<welcome-file>/index.jsp</welcome-file>  
   </welcome-file-list>
-  <!-- 配置Servlet -->  
+  <!-- 配置LoginServlet -->  
   <servlet>  
      <!-- 类名 -->  
     <servlet-name>LoginServlet</servlet-name>
     <!-- 所在的包 -->  
-    <servlet-class>demo.LoginServlet</servlet-class>  
+    <servlet-class>pers.demo.login.LoginServlet</servlet-class>  
   </servlet>  
   <servlet-mapping>  
     <servlet-name>LoginServlet</servlet-name>
     <!-- 访问的网址 -->  
     <url-pattern>/Demo/LoginServlet</url-pattern>  
-    </servlet-mapping>  
+  </servlet-mapping>
+  
+  <!-- 配置RegisterServlet -->  
+  <servlet>  
+     <!-- 类名 -->  
+    <servlet-name>RegisterServlet</servlet-name>
+    <!-- 所在的包 -->  
+    <servlet-class>pers.demo.login.RegisterServlet</servlet-class>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>RegisterServlet</servlet-name>
+    <!-- 访问的网址 -->  
+    <url-pattern>/Demo/RegisterServlet</url-pattern>  
+  </servlet-mapping>  
+  
 </web-app> 

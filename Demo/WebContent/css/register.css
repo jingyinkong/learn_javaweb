@@ -18,6 +18,12 @@ input{
 	display: block;
 }
 
+h2 {
+	color: #000;
+	font-weight:bold;
+	font-size:18px
+}
+
 h3 {
 	color: #000;
 	font-weight:lighter;
@@ -32,8 +38,6 @@ p{
 	margin: 100px auto;
 	width:308px;
 	height:229px;
-	background-color: pink;
+	background-color: LavenderBlush;
 	text-align:center;
 }
-
-
