@@ -7,7 +7,8 @@
 <title>Success</title>
 </head>
 <body>
-	<h1>Success</h1>
+	<% response.setHeader("Refresh","3;url=index.jsp");%>
+	<h1>成功，三秒后将跳转到首页</h1>
 	<a href="index.jsp">返回首页</a>
 </body>
 </html>

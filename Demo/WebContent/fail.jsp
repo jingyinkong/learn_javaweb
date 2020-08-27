@@ -7,7 +7,8 @@
 <title>Fail</title>
 </head>
 <body>
-	<h1>Fail</h1>
+	<% response.setHeader("Refresh","3;url=login.jsp");%>
+	<h1>登录失败！三秒后将跳转到首页</h1>
 	<a href="login.jsp">返回登录页面</a>
 </body>
 </html>

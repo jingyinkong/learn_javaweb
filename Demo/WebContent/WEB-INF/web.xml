@@ -31,6 +31,6 @@
     <servlet-name>RegisterServlet</servlet-name>
     <!-- 访问的网址 -->  
     <url-pattern>/Demo/RegisterServlet</url-pattern>  
-  </servlet-mapping>  
-  
+  </servlet-mapping>
+
 </web-app> 
