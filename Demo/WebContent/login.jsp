@@ -25,17 +25,21 @@
 </script> 
 </head>
 <body>
+	<div class="top">
+		<img src="img/top.png">	
+	</div>
 	<div class="box">
 		<form action="LoginServlet" method="post" onsubmit="return check()">
 			<% 
 				String msg = (String)request.getAttribute("msg");
 			%>
+			<h2>登录</h2>
+			<h3>请告诉我你的昵称吧</h3>
 			<p id="tip"><%=msg == null?"":msg%></p>
-			<h3>Username</h3>
-			<input type="text" name="name" id="name" class="" tabindex="1" autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus">
-			<h3>Password</h3>
-			<input type="password" name="password" id="password" class="" tabindex="2" autocomplete="current-password">
-			<input type="submit" name="commit" value="Sign in" tabindex="3" class="" data-disable-with="Signing inâ¦" onclick="check();">
+			<input type="text" name="name" id="name" class="name" tabindex="1" autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus" placeholder="昵称">
+			<h3>请偷偷写你的密码吧</h3>
+			<input type="password" name="password" id="password" class="password" tabindex="2" autocomplete="current-password" placeholder="密码（6-16个字符组成，区分大小写）">
+			<input type="submit" name="commit" value="登录" tabindex="3" class="button" onclick="check();">
 		</form>
 	</div>
 </body>

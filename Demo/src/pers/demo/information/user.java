@@ -31,8 +31,7 @@ public class user {
 	    }else {
 	    	System.out.println("table is not exist");
 	    	createTable();
-	    }
-	    
+	    }    
 	}
 
 	protected boolean isTableExistence() {
