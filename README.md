@@ -33,5 +33,10 @@
 -------
 **当然是知名学习网站**[哔哩哔哩](https://www.bilibili.com/ "哔哩哔哩 (゜-゜)つロ 干杯")  **啦!**。<br>
 <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3335851201,737797255&fm=26&gp=0.jpg" width="25%"></img><br>
-**具体网址：**
-[Servlet教程](https://b23.tv/Z000QT)
+
+**具体网址：**<br>
+1. Servlet:<br>
+    - [Servlet教程](https://b23.tv/Z000QT)<br>
+    - [Java Web开发（非常推荐的博客）](https://www.cnblogs.com/whgk/category/947929.html)
+2. Jsp
+    - [菜鸟教程——JSP教程](https://www.runoob.com/jsp/jsp-tutorial.html)
